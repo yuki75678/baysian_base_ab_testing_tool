@@ -5,12 +5,12 @@ import torch
 
 
 def model_ctr(data: torch.tensor):
-    alpha = pyro.sample("alpha", dist.Gamma(0.01, 0.01))
-    beta = pyro.sample("beta", dist.Gamma(0.01, 0.01))
+    alpha = pyro.sample("alpha", dist.Gamma(1, 1))
+    beta = pyro.sample("beta", dist.Gamma(1, 1))
 
-    theta = pyro.sample("theta", dist.Beta(alpha, beta))
-
-    pyro.sample("obs", dist.Binomial(total_count=data[0], probs=theta), obs=data[1])
+    with pyro.plate('data', len(data)):
+        theta = pyro.sample("theta", dist.Beta(alpha, beta))
+        pyro.sample('obs', dist.Bernoulli(theta), obs=data)
 
 
 def guide_ctr(data: torch.tensor):
@@ -30,4 +30,5 @@ def guide_ctr(data: torch.tensor):
     alpha_q = pyro.sample("alpha", dist.Gamma(alpha_q_concentration, alpha_q_rate))
     beta_q = pyro.sample("beta", dist.Gamma(beta_q_concentration, beta_q_rate))
 
-    pyro.sample("theta", dist.Beta(alpha_q, beta_q))
+    with pyro.plate('data', len(data)):
+        pyro.sample("theta", dist.Beta(alpha_q, beta_q))
