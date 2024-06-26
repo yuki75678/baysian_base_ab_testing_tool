@@ -13,7 +13,8 @@ class Preprocessed:
         """
         self._control_data = control_data
         self._test_data = test_data
-        self._y_col = y_col
+        if y_col not in control_data.columns or y_col not in test_data.columns:
+            raise ValueError(f"Column {y_col} must be present in both control and test data.")
 
     @property
     def control_data(self) -> pd.DataFrame:
