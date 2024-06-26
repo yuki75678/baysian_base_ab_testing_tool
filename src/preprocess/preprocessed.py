@@ -1,4 +1,5 @@
 import pandas as pd
+import torch
 
 
 class Preprocessed:
@@ -17,6 +18,7 @@ class Preprocessed:
             raise ValueError(
                 f"Column {y_col} must be present in both control and test data."
             )
+        self._y_col = y_col
 
     @property
     def test_data(self) -> pd.DataFrame:
@@ -27,8 +29,20 @@ class Preprocessed:
     def control_data(self) -> pd.DataFrame:
         """Returns the control group data."""
         return self._control_data
+    
+    @property
+    def test_data_y_as_torch(self) -> torch.Tensor:
+        """Returns the test group data."""
+        return torch.tensor(self._test_data[self._y_col])
+
+    @property
+    def control_data_y_as_torch(self) -> pd.DataFrame:
+        """Returns the control group data."""
+        return torch.tensor(self._control_data[self._y_col])
 
     @property
     def y_col(self) -> str:
         """Returns the column name for the target variable."""
         return self._y_col
+    
+
