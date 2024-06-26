@@ -3,7 +3,20 @@ from typing import Tuple
 
 
 def split_data(data: pd.DataFrame, group_col: str) -> Tuple[pd.DataFrame, pd.DataFrame]:
-    """Splite data to 2 group"""
+    """
+    Split data into two groups based on the specified group column.
+
+    Args:
+        data (pd.DataFrame): The input data to be split.
+        group_col (str): The column name used to split the data into two groups.
+
+    Returns:
+        Tuple[pd.DataFrame, pd.DataFrame]: Two dataframes, one for each group.
+
+    Raises:
+        ValueError: If the group column does not contain exactly two unique values.
+        ValueError: If the two groups do not have the same length.
+    """
     group_size_validation(data=data, group_col=group_col)
     group = data[group_col].unique()
 
@@ -16,7 +29,16 @@ def split_data(data: pd.DataFrame, group_col: str) -> Tuple[pd.DataFrame, pd.Dat
 
 
 def group_size_validation(data: pd.DataFrame, group_col: str) -> None:
-    """Validate group size equals to 2"""
+    """
+    Validate that the group column contains exactly two unique values.
+
+    Args:
+        data (pd.DataFrame): The input data containing the group column.
+        group_col (str): The column name to validate.
+
+    Raises:
+        ValueError: If the group column does not contain exactly two unique values.
+    """
     n_of_group = len(data[group_col].unique())
     if n_of_group != 2:
         raise ValueError(f"total number of group must be 2. Now {n_of_group} is given")
