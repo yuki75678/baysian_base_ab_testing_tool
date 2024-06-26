@@ -15,7 +15,7 @@ def split_data(data: pd.DataFrame, group_col: str) -> Tuple[pd.DataFrame, pd.Dat
 
     Raises:
         ValueError: If the group column does not contain exactly two unique values.
-        ValueError: If the two groups do not have the same length.
+        ValueError: If Input data size not equals to sum of test and control length
     """
     group_size_validation(data=data, group_col=group_col)
     group = data[group_col].unique()
@@ -23,7 +23,8 @@ def split_data(data: pd.DataFrame, group_col: str) -> Tuple[pd.DataFrame, pd.Dat
     test = data[data[group_col].eq(group[0])].copy().reset_index()
     control = data[data[group_col].eq(group[1])].copy().reset_index()
 
-    assert len(test) == len(control)
+    if len(test) + len(control)==len(data):
+        raise ValueError(f"The sum of test and control groups must equal to input, found {len(test)} and {len(control)}. However input size is {len(data)}")
 
     return test, control
 
