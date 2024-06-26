@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 
-def validation_data(data: pd.DataFrame, model: str, y_col: str):
+def validation_data(data: pd.DataFrame, model: str, y_col: str)->None:
     """
     Validate the input data based on the specified model.
 
@@ -21,7 +21,7 @@ def validation_data(data: pd.DataFrame, model: str, y_col: str):
         raise ValueError("Model type is not defined")
 
 
-def validate_binary_column_invalid_values(data: pd.DataFrame, y_col: str):
+def validate_binary_column_invalid_values(data: pd.DataFrame, y_col: str)->None:
     """
     Validate that the specified column contains only binary values (0 or 1).
 
@@ -69,7 +69,7 @@ def is_int_or_float(y) -> bool:
     return is_int(y=y) or is_float(y=y)
 
 
-def is_number_in_acceptable_value_list(y, acceptable_value_list):
+def is_number_in_acceptable_value_list(y, acceptable_value_list)->bool:
     """Check if the value is in the list of acceptable values."""
     return y in acceptable_value_list
 
