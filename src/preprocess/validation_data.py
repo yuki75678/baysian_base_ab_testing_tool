@@ -15,13 +15,13 @@ def validation_data(data: pd.DataFrame, model: str, y_col: str):
         ValueError: If the model type is not defined.
     """
     if model == "model_ctr":
-        is_y_binormal(data=data, y_col=y_col)
+        validate_binary_column_invalid_values(data=data, y_col=y_col)
 
     else:
         raise ValueError("Model type is not defined")
 
 
-def is_y_binormal(data: pd.DataFrame, y_col: str):
+def validate_binary_column_invalid_values(data: pd.DataFrame, y_col: str):
     """
     Validate that the specified column contains only binary values (0 or 1).
 
