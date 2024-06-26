@@ -11,15 +11,21 @@ class Preprocessed:
             test_data (pd.DataFrame): The test group data.
             y_col (str): The column name for the target variable.
         """
-        self.control_data = control_data
-        self.test_data = test_data
-        self.y_col = y_col
+        self._control_data = control_data
+        self._test_data = test_data
+        self._y_col = y_col
 
-    def get_control_data(self) -> pd.DataFrame:
-        return self.control_data
+    @property
+    def control_data(self) -> pd.DataFrame:
+        """Returns the control group data."""
+        return self._control_data
 
-    def get_test_data(self) -> pd.DataFrame:
-        return self.test_data
+    @property
+    def test_data(self) -> pd.DataFrame:
+        """Returns the test group data."""
+        return self._test_data
 
-    def get_y_col(self) -> str:
-        return self.y_col
+    @property
+    def y_col(self) -> str:
+        """Returns the column name for the target variable."""
+        return self._y_col
