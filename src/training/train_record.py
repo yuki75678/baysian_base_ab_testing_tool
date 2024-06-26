@@ -10,18 +10,20 @@ class TrainRecord:
         theoretical_mean_of_model: float,
         train_data: pd.DataFrame,
     ) -> None:
-        print(type(model_param))
-        self.model_param = model_param
-        self.theoretical_mean_of_model = deepcopy(theoretical_mean_of_model)
+        self._model_param = model_param
+        self._theoretical_mean_of_model = deepcopy(theoretical_mean_of_model)
 
         # save train data on training point
-        self.train_data = deepcopy(train_data)
+        self._train_data = deepcopy(train_data)
 
-    def get_model_param(self) -> ParamStoreDict:
-        return self.model_param
+    @property
+    def model_param(self) -> ParamStoreDict:
+        return self._model_param
 
-    def get_theoretical_mean_of_model(self) -> float:
-        return self.theoretical_mean_of_model
+    @property
+    def theoretical_mean_of_model(self) -> float:
+        return self._theoretical_mean_of_model
 
-    def get_train_data(self) -> pd.DataFrame:
-        return self.train_data
+    @property
+    def train_data(self) -> pd.DataFrame:
+        return self._train_data
