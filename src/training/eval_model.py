@@ -14,6 +14,5 @@ def evaluate_model_theoretical():
     print(f"Estimated theoretical variance of theta: {variance_theta.item():.6f}")
     print(f"Estimated alpha: {alpha_q.item():.6f}")
     print(f"Estimated beta: {beta_q.item():.6f}")
-    # print(f"Data mean: {data.float().mean():.6f}")
 
     return mean_theta.item(), variance_theta.item()
