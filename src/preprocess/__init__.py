@@ -1,4 +1,4 @@
-from src.preprocess.preprocess_pipeline import preprocess_pipeline
+from src.preprocess.pipeline_module import preprocess_pipeline
 from src.preprocess.preprocessed import Preprocessed
 
 
