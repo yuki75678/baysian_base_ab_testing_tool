@@ -1,4 +1,4 @@
-import pandas as pd
+import torch
 from copy import deepcopy
 from pyro.params.param_store import ParamStoreDict
 
@@ -8,7 +8,7 @@ class TrainRecord:
         self,
         model_param: ParamStoreDict,
         theoretical_mean_of_model: float,
-        train_data: pd.DataFrame,
+        train_data: torch.Tensor,
     ) -> None:
         """
         Initializes the TrainRecord with model parameters, theoretical mean of the model, and training data.
@@ -16,7 +16,7 @@ class TrainRecord:
         Args:
             model_param (ParamStoreDict): The parameters of the trained model.
             theoretical_mean_of_model (float): The theoretical mean of the model.
-            train_data (pd.DataFrame): The training data used for training.
+            train_data (torch.Tensor): The training data used for training.
 
         Raises:
             TypeError: If model_param is not an instance of ParamStoreDict.
@@ -28,7 +28,7 @@ class TrainRecord:
         self._theoretical_mean_of_model = theoretical_mean_of_model
 
         # save train data on training point
-        self._train_data = train_data.copy()
+        self._train_data = deepcopy(train_data)
 
     @property
     def model_param(self) -> ParamStoreDict:
@@ -51,11 +51,11 @@ class TrainRecord:
         return self._theoretical_mean_of_model
 
     @property
-    def train_data(self) -> pd.DataFrame:
+    def train_data(self) -> torch.Tensor:
         """
         Gets the training data.
 
         Returns:
-            pd.DataFrame: The training data used for training.
+            torch.Tensor: The training data used for training.
         """
         return self._train_data
