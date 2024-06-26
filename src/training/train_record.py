@@ -23,7 +23,7 @@ class TrainRecord:
         """
         if not isinstance(model_param, ParamStoreDict):
             raise TypeError("model_param must be of type ParamStoreDict")
-        
+
         self._model_param = deepcopy(model_param)
         self._theoretical_mean_of_model = theoretical_mean_of_model
 
