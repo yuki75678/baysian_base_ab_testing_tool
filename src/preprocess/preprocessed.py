@@ -36,7 +36,7 @@ class Preprocessed:
         return torch.tensor(self._test_data[self._y_col])
 
     @property
-    def control_data_y_as_torch(self) -> pd.DataFrame:
+    def control_data_y_as_torch(self) -> torch.Tensor:
         """Returns the control group data."""
         return torch.tensor(self._control_data[self._y_col])
 
