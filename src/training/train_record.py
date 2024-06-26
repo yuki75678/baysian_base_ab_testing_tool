@@ -13,11 +13,11 @@ class TrainRecord:
         if not isinstance(model_param, ParamStoreDict):
             raise TypeError("model_param must be of type ParamStoreDict")
         
-        self._model_param = model_param
-        self._theoretical_mean_of_model = deepcopy(theoretical_mean_of_model)
+        self._model_param = deepcopy(model_param)
+        self._theoretical_mean_of_model = theoretical_mean_of_model
 
         # save train data on training point
-        self._train_data = deepcopy(train_data)
+        self._train_data = train_data.copy()
 
     @property
     def model_param(self) -> ParamStoreDict:
