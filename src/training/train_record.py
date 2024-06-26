@@ -10,6 +10,9 @@ class TrainRecord:
         theoretical_mean_of_model: float,
         train_data: pd.DataFrame,
     ) -> None:
+        if not isinstance(model_param, ParamStoreDict):
+            raise TypeError("model_param must be of type ParamStoreDict")
+        
         self._model_param = model_param
         self._theoretical_mean_of_model = deepcopy(theoretical_mean_of_model)
 
