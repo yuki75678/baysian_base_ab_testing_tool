@@ -12,10 +12,10 @@ from src.training.eval_model import evaluate_model_theoretical
 
 
 def train(
-    data: torch.tensor,
+    data: torch.Tensor,
     num_iterations: int = 100,
     adam_params={"lr": 0.005, "betas": (0.90, 0.999)},
-) -> None:
+) -> TrainRecord:
     """
     Train postrior distribution by SVI method
     Note that training is conducted on each data separately (e.g. control data)
