@@ -38,11 +38,11 @@ def train(
         if i % 100 == 0:
             print(f"Iteration {i} : loss = {loss}")
 
-    theorical_mean_of_model, _ = evaluate_model_theoretical()
-    print("theoretical_mean", theorical_mean_of_model)
+    theoretical_mean_of_model, _ = evaluate_model_theoretical()
+    print("theoretical_mean_of_model", theoretical_mean_of_model)
 
     return TrainRecord(
         model_param=pyro.get_param_store(),
-        theorical_mean_of_model=theorical_mean_of_model,
+        theoretical_mean_of_model=theoretical_mean_of_model,
         train_data=train_data_for_record,
     )
