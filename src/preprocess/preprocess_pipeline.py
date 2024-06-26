@@ -7,7 +7,7 @@ from src.preprocess.preprocessed import Preprocessed
 def preprocess_pipeline(
     data: pd.DataFrame, y_col: str, model: str, group_col: str
 ) -> Preprocessed:
-    """ 
+    """
     Perform preprocessing using a pipeline
     Step 1: Validate input data type based on the model type
     Step 2: Split data into test and control groups
@@ -25,7 +25,7 @@ def preprocess_pipeline(
         raise ValueError(f"Validation failed: {e}")
 
     try:
-        control_data, test_data = split_data(data=data, group_col=group_col)
+        test_data, control_data = split_data(data=data, group_col=group_col)
     except Exception as e:
         raise ValueError(f"Data split failed: {e}")
 
