@@ -1,9 +1,6 @@
 import torch
-import pandas as pd
 import pyro
-import numpy as np
 from copy import deepcopy
-import pyro.distributions as dist
 from pyro.infer import SVI, Trace_ELBO
 from pyro.optim import Adam
 from src.pyro_model.ctr.model_ctr import model_ctr, guide_ctr
