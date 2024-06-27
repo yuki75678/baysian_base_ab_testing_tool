@@ -17,4 +17,9 @@ def get_args():
 
 def get_conf():
     args = get_args()
-    return OmegaConf.load(args.conf)
+    try:
+        conf = OmegaConf.load(args.conf)
+    except Exception as e:
+        raise ValueError(f"Failed to load configuration file: {e}")
+    
+    return conf
