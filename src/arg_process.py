@@ -45,5 +45,5 @@ def get_conf():
         conf = OmegaConf.load(args.conf)
     except Exception as e:
         raise ValueError(f"Failed to load configuration file: {e}")
-    
+
     return conf
