@@ -1,10 +1,10 @@
 import pandas as pd
-from omegaconf import OmegaConf
+from omegaconf import OmegaConf, DictConfig
 from src.arg_process import get_conf
 from src.ab_test_pipeline import ab_test_pipeline
 
 
-def load_configuration():
+def load_configuration() -> None:
     """
     Load and return the configuration from the provided configuration file.
 
@@ -21,7 +21,7 @@ def load_configuration():
         raise ValueError(f"Error loading configuration: {e}")
 
 
-def load_data(file_path):
+def load_data(file_path: str) -> pd.DataFrame:
     """
     Load and return the data from the provided CSV file path.
 
@@ -41,7 +41,7 @@ def load_data(file_path):
         raise ValueError(f"Error reading data from {file_path}: {e}")
 
 
-def run_ab_test(conf, data):
+def run_ab_test(conf: DictConfig, data: pd.DataFrame) -> None:
     """
     Run the A/B testing pipeline with the provided configuration and data.
 
@@ -75,8 +75,8 @@ def main():
     """
     try:
         conf = load_configuration()
-        data = load_data(conf.data)
-        run_ab_test(conf, data)
+        data = load_data(file_path=conf.data)
+        run_ab_test(conf=conf, data=data)
     except Exception as e:
         print(f"Critical error in main execution: {e}")
 
