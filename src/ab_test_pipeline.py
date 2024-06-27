@@ -1,7 +1,7 @@
 import pandas as pd
 from src.training.train import train
 from src.preprocess import preprocess_pipeline
-from src.simulation.ctr_model.monte_carlro_ctr import monte_carlo_simularer_ctr
+from src.simulation.ctr_model.monte_carlo_ctr import monte_carlo_simularer_ctr
 
 
 def ab_test_pipline(
