@@ -4,6 +4,18 @@ from omegaconf import OmegaConf
 
 
 def get_args():
+    """
+    Parse and return command line arguments.
+
+    This function uses argparse to parse command line arguments for the configuration
+    file path. It ensures that the configuration file path is provided and exists.
+
+    Returns:
+    argparse.Namespace: Parsed command line arguments containing the configuration file path.
+
+    Raises:
+    SystemExit: If the configuration file path is not provided or the file does not exist.
+    """
     parser = argparse.ArgumentParser()
 
     parser.add_argument("-c", "--conf", help="path of setting file")
@@ -16,6 +28,18 @@ def get_args():
 
 
 def get_conf():
+    """
+    Load and return the configuration from the file specified in command line arguments.
+
+    This function uses OmegaConf to load the configuration file provided via command line
+    arguments. It handles errors related to file loading.
+
+    Returns:
+    omegaconf.dictconfig.DictConfig: Loaded configuration.
+
+    Raises:
+    ValueError: If the configuration file fails to load.
+    """
     args = get_args()
     try:
         conf = OmegaConf.load(args.conf)
