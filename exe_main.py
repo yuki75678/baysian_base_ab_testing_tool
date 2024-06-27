@@ -67,6 +67,12 @@ def run_ab_test(conf, data):
 
 
 def main():
+    """
+    Main function to run the A/B testing pipeline.
+
+    This function loads the configuration, reads the data, and runs the A/B testing pipeline
+    using the specified parameters from the configuration.
+    """
     try:
         conf = load_configuration()
         data = load_data(conf.data)
