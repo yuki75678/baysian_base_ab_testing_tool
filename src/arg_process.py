@@ -16,7 +16,7 @@ def get_args():
     Raises:
     SystemExit: If the configuration file path is not provided or the file does not exist.
     """
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description="Process configuration file path.")
 
     parser.add_argument("-c", "--conf", help="path of setting file")
     args = parser.parse_args()
