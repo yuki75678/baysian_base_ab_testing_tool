@@ -14,8 +14,16 @@ def ab_test_pipline(
         betas:tuple,
         )->None:
     """
-    
-    
+    Run A/B testing pipeline with preprocessing, model training, and Monte Carlo simulation.
+
+    Parameters:
+    data (pd.DataFrame): The input data frame.
+    y_col (str): The column name of the target variable.
+    model (str): The model type to be used for training.
+    group_col (str): The column name for group assignment (A[test]/B[contorol]).
+    num_iterations (int): Number of iterations for training the model.
+    lr (float): Learning rate for the optimizer.
+    betas (tuple): Betas parameters for the optimizer.
     """
     # split data to group A or B
     preprocessed = preprocess_pipeline(data=data,y_col=y_col,model=model,group_col=group_col)
