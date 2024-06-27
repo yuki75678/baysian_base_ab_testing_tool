@@ -75,8 +75,8 @@ def main():
     """
     try:
         conf = load_configuration()
-        data = load_data(conf.data)
-        run_ab_test(conf, data)
+        data = load_data(file_path=conf.data)
+        run_ab_test(conf=conf, data=data)
     except Exception as e:
         print(f"Critical error in main execution: {e}")
 
