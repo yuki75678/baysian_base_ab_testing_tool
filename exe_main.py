@@ -1,14 +1,14 @@
 import pandas as pd
 from omegaconf import OmegaConf
 from src.arg_process import get_conf
-from src.ab_test_pipeline import ab_test_pipline
+from src.ab_test_pipeline import ab_test_pipeline
 
 def main():
     conf = get_conf()
     print(conf)
 
     data = pd.read_csv(conf.data)
-    ab_test_pipline(
+    ab_test_pipeline(
         data=data,
         y_col=conf.y_col,
         model=conf.model,

@@ -4,7 +4,7 @@ from src.preprocess import preprocess_pipeline
 from src.simulation.ctr_model.monte_carlo_ctr import monte_carlo_simularer_ctr
 
 
-def ab_test_pipline(
+def ab_test_pipeline(
         data:pd.DataFrame,
         y_col:str,
         model:str,
